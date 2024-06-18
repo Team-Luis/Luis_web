@@ -15,7 +15,7 @@ const Header = () => {
       <S.ButtonWrap>
         <Button
           text="로그인"
-          style={{ borderColor: "#FF7E73", color: "#FF7E73", background: "#fff" }}
+          style={{ color: "#FF7E73", background: "#fff", border: "1px solid #FF7E73" }}
           functions={() => navigate("/login")}
         />
         <Button

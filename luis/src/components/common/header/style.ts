@@ -32,8 +32,9 @@ export const LogoWrap = styled.div`
 `;
 
 export const ButtonWrap = styled.div`
-  width: 230px;
+  width: 300px;
   height: 60px;
 
   display: flex;
+  gap: 30px;
 `;
