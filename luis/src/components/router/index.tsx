@@ -7,14 +7,11 @@ import Signup from "../auth/signup";
 
 const Router = () => {
   return (
-    <BrowserRouter>
-      <Header />
-      <Routes>
-        <Route path="/start" element={<StartView />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
-      </Routes>
-    </BrowserRouter>
+    <Routes>
+      <Route path="/start" element={<StartView />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/signup" element={<Signup />} />
+    </Routes>
   );
 };
 
