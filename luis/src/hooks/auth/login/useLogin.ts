@@ -37,7 +37,7 @@ const useLogin = () => {
       luisToast.infoToast("로그인 정보를 입력해주세요");
     }
 
-    await luisAxios.post<LoginResposne>(`${CONFIG.serverUrl}/auth/login`, loginData).then((res) => {
+    await luisAxios.post<LoginResposne>("/auth/login", loginData).then((res) => {
       cookie.setCookie(ACCESS_TOKEN_KEY, res.data.data.accessToken);
       cookie.setCookie(REFRESH_TOKEN_KEY, res.data.data.refreshToken);
       navigate("/main");

@@ -31,6 +31,11 @@ export const LoginWrap = styled.div`
     font-weight: 600;
     color: #ff7f74;
   }
+
+  span {
+    font-family: Pretendard;
+    font-size: 24px;
+  }
 `;
 
 export const InputWrap = styled.div`

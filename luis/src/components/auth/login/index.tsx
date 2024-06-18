@@ -20,7 +20,6 @@ const Login = () => {
             type="email"
             value={login.loginData.email}
             functions="password"
-            labelStyle={{ top: "" }}
             placeholder="이메일을 입력해주세요."
           >
             이메일
