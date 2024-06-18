@@ -43,7 +43,7 @@ const Login = () => {
         />
         <S.AuthUtilWrap>
           계정이 없으신가요? &nbsp;&nbsp;
-          <span onClick={() => navigate("/login")}>로그인</span>
+          <span onClick={() => navigate("/signup")}>회원가입</span>
         </S.AuthUtilWrap>
       </S.LoginWrap>
     </S.Main>

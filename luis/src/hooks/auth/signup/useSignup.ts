@@ -1,8 +1,9 @@
 import React, { useCallback, useState } from "react";
 import { SignupTypes } from "../../../types/auth/signup/signup.type";
-import { luisAxios } from "../../../libs/axios/customAxios";
-import luisToast from "../../../utils/toast/swal";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import luisToast from "../../../utils/toast/swal";
+import CONFIG from "../../../config/config.json";
 
 const useSignup = () => {
   const navigate = useNavigate();
@@ -21,7 +22,7 @@ const useSignup = () => {
   );
 
   const onSignup = async () => {
-    await luisAxios.post("/auth/signup", signupData).then(() => {
+    await axios.post(`${CONFIG.serverUrl}/auth/signup`, signupData).then(() => {
       luisToast.successToast("회원가입 성공");
       navigate("/login");
     });

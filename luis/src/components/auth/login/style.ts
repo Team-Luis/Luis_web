@@ -57,13 +57,15 @@ export const AuthUtilWrap = styled.div`
 
   display: flex;
   align-self: flex-end;
+  justify-content: flex-start;
 
   font-family: Pretendard;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 500;
   color: #000;
 
   span {
+    font-size: 18px;
     color: #ff7e73;
     cursor: pointer;
   }

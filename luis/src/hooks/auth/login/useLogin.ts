@@ -6,6 +6,7 @@ import luisToast from "../../../utils/toast/swal";
 import cookie from "../../../libs/cookie/cookie";
 import { ACCESS_TOKEN_KEY, REFRESH_TOKEN_KEY } from "../../../constants/token.constant";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const useLogin = () => {
   const navigate = useNavigate();
@@ -37,7 +38,7 @@ const useLogin = () => {
       luisToast.infoToast("로그인 정보를 입력해주세요");
     }
 
-    await luisAxios.post<LoginResposne>("/auth/login", loginData).then((res) => {
+    await axios.post<LoginResposne>(`${CONFIG.serverUrl}/auth/login`, loginData).then((res) => {
       cookie.setCookie(ACCESS_TOKEN_KEY, res.data.data.accessToken);
       cookie.setCookie(REFRESH_TOKEN_KEY, res.data.data.refreshToken);
       navigate("/main");
