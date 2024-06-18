@@ -2,8 +2,8 @@ import styled from "styled-components";
 
 export const HeaderWrap = styled.div`
   width: 100vw;
-  height: 110px;
-  min-height: 110px;
+  height: 90px;
+  min-height: 90px;
 
   display: flex;
   justify-content: space-between;
