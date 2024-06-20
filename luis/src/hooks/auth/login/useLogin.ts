@@ -1,6 +1,5 @@
 import { useCallback, useState } from "react";
 import { LoginResposne, LoginType } from "../../../types/auth/login/login.type";
-import { luisAxios } from "../../../libs/axios/customAxios";
 import CONFIG from "../../../config/config.json";
 import luisToast from "../../../utils/toast/swal";
 import cookie from "../../../libs/cookie/cookie";
@@ -38,7 +37,7 @@ const useLogin = () => {
       luisToast.infoToast("로그인 정보를 입력해주세요");
     }
 
-    await axios.post<LoginResposne>(`${CONFIG.serverUrl}/auth/login`, loginData).then((res) => {
+    await axios.post<LoginResposne>(`${CONFIG.serverUrl}/auth/sign-in`, loginData).then((res) => {
       cookie.setCookie(ACCESS_TOKEN_KEY, res.data.data.accessToken);
       cookie.setCookie(REFRESH_TOKEN_KEY, res.data.data.refreshToken);
       navigate("/main");

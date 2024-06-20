@@ -19,10 +19,21 @@ const Signup = () => {
             onchange={signup.handleSignupData}
             type="email"
             value={signup.signupData.email}
-            functions="password"
+            functions="id"
             placeholder="이메일을 입력해주세요."
           >
             이메일
+          </TextField>
+          <TextField
+            id="id"
+            name="id"
+            onchange={signup.handleSignupData}
+            type="text"
+            value={signup.signupData.id}
+            functions="password"
+            placeholder="아이디를 입력해주세요."
+          >
+            아이디
           </TextField>
           <TextField
             id="password"

@@ -8,6 +8,7 @@ import CONFIG from "../../../config/config.json";
 const useSignup = () => {
   const navigate = useNavigate();
   const [signupData, setSignupData] = useState<SignupTypes>({
+    id: "",
     email: "",
     password: "",
     checkPassword: "",
@@ -22,10 +23,17 @@ const useSignup = () => {
   );
 
   const onSignup = async () => {
-    await axios.post(`${CONFIG.serverUrl}/auth/signup`, signupData).then(() => {
-      luisToast.successToast("회원가입 성공");
-      navigate("/login");
-    });
+    const { id, email, password } = signupData;
+    await axios
+      .post(`${CONFIG.serverUrl}/auth/sign-up`, {
+        userId: id,
+        email: email,
+        password: password,
+      })
+      .then(() => {
+        luisToast.successToast("회원가입 성공");
+        navigate("/login");
+      });
   };
 
   return {
