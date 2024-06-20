@@ -8,7 +8,7 @@ import CONFIG from "../../../config/config.json";
 const useSignup = () => {
   const navigate = useNavigate();
   const [signupData, setSignupData] = useState<SignupTypes>({
-    id: "",
+    userId: "",
     email: "",
     password: "",
     checkPassword: "",
@@ -23,10 +23,10 @@ const useSignup = () => {
   );
 
   const onSignup = async () => {
-    const { id, email, password } = signupData;
+    const { userId, email, password } = signupData;
     await axios
       .post(`${CONFIG.serverUrl}/auth/sign-up`, {
-        userId: id,
+        userId: userId,
         email: email,
         password: password,
       })
