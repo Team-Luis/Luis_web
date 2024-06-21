@@ -31,6 +31,40 @@ export const LogoWrap = styled.div`
   }
 `;
 
+export const SearchWrap = styled.div`
+  width: 970px;
+  height: 50px;
+
+  border-radius: 5px;
+  border: 1px solid #d9d9d9;
+
+  display: flex;
+  align-items: center;
+
+  img {
+    cursor: pointer;
+
+    padding: 10px;
+  }
+
+  input {
+    width: 880px;
+    height: 90%;
+
+    font-family: Pretendard;
+    font-size: 18px;
+    font-weight: 400;
+
+    &::placeholder {
+      color: #7a7a7a;
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+`;
+
 export const ButtonWrap = styled.div`
   width: 300px;
   height: 60px;

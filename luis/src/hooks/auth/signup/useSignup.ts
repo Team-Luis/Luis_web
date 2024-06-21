@@ -22,10 +22,16 @@ const useSignup = () => {
   );
 
   const onSignup = async () => {
-    await axios.post(`${CONFIG.serverUrl}/auth/signup`, signupData).then(() => {
-      luisToast.successToast("회원가입 성공");
-      navigate("/login");
-    });
+    const { email, password } = signupData;
+    await axios
+      .post(`${CONFIG.serverUrl}/auth/signup`, {
+        email: email,
+        password: password,
+      })
+      .then(() => {
+        luisToast.successToast("회원가입 성공");
+        navigate("/login");
+      });
   };
 
   return {
