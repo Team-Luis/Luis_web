@@ -29,7 +29,7 @@ const Signup = () => {
             name="id"
             onchange={signup.handleSignupData}
             type="text"
-            value={signup.signupData.id}
+            value={signup.signupData.userId}
             functions="password"
             placeholder="아이디를 입력해주세요."
           >

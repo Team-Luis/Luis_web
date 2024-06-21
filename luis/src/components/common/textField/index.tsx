@@ -10,6 +10,7 @@ interface TextFieldProps {
   onchange?: React.ChangeEventHandler<HTMLInputElement>;
   functions: (() => void) | string;
   labelStyle?: React.CSSProperties;
+  spanStyle?: React.CSSProperties;
   placeholder: string;
 }
 
