@@ -1,11 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
 import * as S from "./style";
 import Logo from "../../../assets/luissasalogo.svg";
 import Button from "../button";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import useHeader from "../../../hooks/common/header/useHeader";
 
 const Header = () => {
   const navigate = useNavigate();
+  const { pathname } = useLocation();
+  const { ...header } = useHeader();
+
+  useEffect(() => {
+    header.getProfile();
+  }, []);
+
   return (
     <S.HeaderWrap>
       <S.LogoWrap onClick={() => navigate("/")}>
@@ -14,14 +22,14 @@ const Header = () => {
       </S.LogoWrap>
       <S.ButtonWrap>
         <Button
-          text="로그인"
+          text={pathname === "/main" ? header.profile.userId : "로그인"}
           style={{ borderColor: "#FF7E73", color: "#FF7E73", background: "#fff" }}
-          functions={() => navigate("/login")}
+          functions={pathname === "/main" ? () => false : () => navigate("/login")}
         />
         <Button
-          text="회원가입"
+          text={pathname === "/main" ? "로그아웃" : "회원가입"}
           style={{ color: "#fff", background: "#ef7e73" }}
-          functions={() => navigate("/signup")}
+          functions={pathname === "/main" ? header.logout : () => navigate("/signup")}
         />
       </S.ButtonWrap>
     </S.HeaderWrap>

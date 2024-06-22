@@ -39,7 +39,7 @@ const useLogin = () => {
     }
 
     await axios
-      .post<LoginResposne>("/auth/sign-in", {
+      .post<LoginResposne>(`${CONFIG.serverUrl}/auth/sign-in`, {
         email: email,
         password: password,
       })
