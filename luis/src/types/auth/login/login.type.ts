@@ -6,8 +6,7 @@ export interface LoginType {
 }
 
 export interface LoginResposne extends Response {
-  data: {
+
     accessToken: string;
     refreshToken: string;
-  };
 }

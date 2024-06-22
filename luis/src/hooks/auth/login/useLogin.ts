@@ -38,9 +38,12 @@ const useLogin = () => {
       luisToast.infoToast("로그인 정보를 입력해주세요");
     }
 
-    await axios.post<LoginResposne>(`${CONFIG.serverUrl}/auth/login`, loginData).then((res) => {
-      cookie.setCookie(ACCESS_TOKEN_KEY, res.data.data.accessToken);
-      cookie.setCookie(REFRESH_TOKEN_KEY, res.data.data.refreshToken);
+    await axios.post<LoginResposne>(`${CONFIG.serverUrl}/auth/sign-in`, {
+      email: email,
+      password: password,
+    }).then((res) => {
+      cookie.setCookie(ACCESS_TOKEN_KEY, res.data.accessToken);
+      cookie.setCookie(REFRESH_TOKEN_KEY, res.data.refreshToken);
       navigate("/main");
     });
   };
