@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { PostType } from "../../../types/list/list.type";
 import { luisAxios } from "../../../libs/axios/customAxios";
 import { AxiosError } from "axios";
+import Vector from "../../../assets/Vector.png";
 import * as S from "./style";
 
 const Post = () => {
@@ -43,7 +44,10 @@ const Post = () => {
                 <S.PostWrap key={post.idx}>
                     <h2>{post.title}</h2>
                     <p>{post.content}</p>
-                    <p>Author: {post.author}</p>
+                    <p>{post.author}</p>
+                    <p>
+                        <img src={Vector} alt="Vector Icon" /> {post.likes}
+                    </p>
                 </S.PostWrap>
             ))}
             {isLoading && <p>Loading...</p>}

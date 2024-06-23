@@ -49,13 +49,3 @@ export const Title = styled.h1`
     color: #ff7e73;
   }
 `;
-
-export const SubTitle = styled.h4`
-  font-family: Pretendard;
-  font-size: 24px;
-  font-weight: 600;
-
-  span {
-    color: #ff7e73;
-  }
-`;
