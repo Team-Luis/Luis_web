@@ -11,7 +11,7 @@ const Login = () => {
   return (
     <S.Main>
       <S.LoginWrap>
-        <h1>Luissasa</h1>
+        <h1>Luisssassa</h1>
         <S.InputWrap>
           <TextField
             id="email"
