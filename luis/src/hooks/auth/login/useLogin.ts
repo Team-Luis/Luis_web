@@ -15,11 +15,11 @@ const useLogin = () => {
   });
 
   const handleLoginData = useCallback(
-    (e: React.ChangeEvent<HTMLInputElement>) => {
-      const { name, value } = e.target;
-      setLoginData((prev) => ({ ...prev, [name]: value }));
-    },
-    [setLoginData],
+      (e: React.ChangeEvent<HTMLInputElement>) => {
+        const { name, value } = e.target;
+        setLoginData((prev) => ({ ...prev, [name]: value }));
+      },
+      [setLoginData],
   );
 
   const onLogin = async () => {
@@ -27,26 +27,31 @@ const useLogin = () => {
 
     if (email.length === 0) {
       luisToast.infoToast("이메일을 입력해주세요.");
+      return;
     }
 
     if (password.length === 0) {
       luisToast.infoToast("비밀번호를 입력해주세요");
+      return;
     }
 
-    if (email.length === 0 && password.length === 0) {
-      luisToast.infoToast("로그인 정보를 입력해주세요");
-    }
-
-    await axios
-      .post<LoginResposne>(`${CONFIG.serverUrl}/auth/sign-in`, {
+    try {
+      const res = await axios.post<LoginResposne>(`${CONFIG.serverUrl}/auth/sign-in`, {
         email: email,
         password: password,
-      })
-      .then((res) => {
+      });
+
+      if (res.status === 200) {
         cookie.setCookie(ACCESS_TOKEN_KEY, res.data.accessToken);
         cookie.setCookie(REFRESH_TOKEN_KEY, res.data.refreshToken);
         navigate("/main");
-      });
+      } else {
+        luisToast.errorToast("로그인 실패. 다시 시도해주세요.");
+      }
+    } catch (error) {
+      luisToast.errorToast("로그인 중 오류가 발생했습니다.");
+      console.error("Login error:", error);
+    }
   };
 
   return {
