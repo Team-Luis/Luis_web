@@ -25,11 +25,11 @@ const Signup = () => {
             이메일
           </TextField>
           <TextField
-            id="id"
-            name="id"
+            id="userId"
+            name="userId"
             onchange={signup.handleSignupData}
             type="text"
-            value={signup.signupData.id}
+            value={signup.signupData.userId}
             functions="password"
             placeholder="아이디를 입력해주세요."
           >
@@ -59,7 +59,7 @@ const Signup = () => {
           </TextField>
         </S.InputWrap>
         <Button
-          text="로그인"
+          text="회원가입"
           functions={signup.onSignup}
           style={{ width: "500px", height: "80px", background: "#ff7e73", color: "#fff", fontSize: "24px" }}
         />
