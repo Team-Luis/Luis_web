@@ -18,13 +18,14 @@ const Write = () => {
         <div>
           <label>카테고리 선택</label>
           <select>
-            <option onClick={() => write.handleCatgory("ALL")}>ALL</option>
-            <option onClick={() => write.handleCatgory("WEB")}>Web</option>
-            <option onClick={() => write.handleCatgory("IOS")}>iOS</option>
-            <option onClick={() => write.handleCatgory("ANDROID")}>Android</option>
-            <option onClick={() => write.handleCatgory("SERVER")}>Server</option>
+            <option onChange={() => write.setCategory("ALL")}>ALL</option>
+            <option onChange={() => write.setCategory("WEB")}>Web</option>
+            <option onChange={() => write.setCategory("IOS")}>iOS</option>
+            <option onChange={() => write.setCategory("ANDROID")}>Android</option>
+            <option onChange={() => write.setCategory("SERVER")}>Server</option>
           </select>
         </div>
+        <button onClick={write.onWrite}>글쓰기</button>
       </S.WriteWrap>
     </S.Main>
   );

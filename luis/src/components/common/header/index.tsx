@@ -9,7 +9,7 @@ import { CategoryData, WriteDataAtom } from "../../../store/write/write.store";
 import luisToast from "../../../utils/toast/swal";
 import axios from "axios";
 import token from "../../../libs/token/token";
-import { ACCESS_TOKEN_KEY } from "../../../constants/token.constant";
+import { ACCESS_TOKEN_KEY, REQUEST_TOKEN_KEY } from "../../../constants/token.constant";
 import { luisAxios } from "../../../libs/axios/customAxios";
 
 const Header = () => {
@@ -19,7 +19,7 @@ const Header = () => {
   const category = useRecoilValue(CategoryData);
   const onWrite = async () => {
     await luisAxios
-      .post("/post", {
+      .post(`/post`, {
         title: title,
         content: content,
         category: category,

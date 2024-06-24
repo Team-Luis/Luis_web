@@ -4,6 +4,10 @@ import luisToast from "../../utils/toast/swal";
 import { luisAxios } from "../../libs/axios/customAxios";
 import { useRecoilState } from "recoil";
 import { CategoryData, WriteDataAtom } from "../../store/write/write.store";
+import axios, { AxiosError } from "axios";
+import COFNIG from "../../config/config.json";
+import token from "../../libs/token/token";
+import { ACCESS_TOKEN_KEY } from "../../constants/token.constant";
 
 const useWrite = () => {
   const [writeData, setWriteData] = useRecoilState(WriteDataAtom);
@@ -17,38 +21,33 @@ const useWrite = () => {
     [setWriteData],
   );
 
-  const handleCatgory = (category: string) => {
-    setCategory(category);
-
-    const { title, content } = writeData;
-    console.log(title, content);
-  };
-
   const onWrite = async () => {
     const { title, content } = writeData;
-    if (title.length < 0) {
-      luisToast.infoToast("제목을 입력해주세요");
-    }
-    if (content.length < 0) {
-      luisToast.infoToast("내용을 입력해주세요");
-    }
-
     try {
-      await luisAxios
-        .post("/post", {
+      await axios.post(
+        `${COFNIG.serverUrl}/post`,
+        {
           title: title,
           content: content,
           category: category,
-        })
-        .then(() => luisToast.successToast("글쓰기 성공"));
-    } catch (error) {}
+        },
+        {
+          headers: {
+            Authorization: `Bearer #`,
+          },
+        },
+      );
+    } catch (error) {
+      console.log((error as AxiosError as AxiosError).message);
+    }
   };
 
   return {
     writeData,
-    handleCatgory,
-    handleWriteData,
     onWrite,
+    category,
+    setCategory,
+    handleWriteData,
   };
 };
 
