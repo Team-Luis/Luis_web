@@ -15,11 +15,11 @@ const useLogin = () => {
   });
 
   const handleLoginData = useCallback(
-      (e: React.ChangeEvent<HTMLInputElement>) => {
-        const { name, value } = e.target;
-        setLoginData((prev) => ({ ...prev, [name]: value }));
-      },
-      [setLoginData],
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      const { name, value } = e.target;
+      setLoginData((prev) => ({ ...prev, [name]: value }));
+    },
+    [setLoginData],
   );
 
   const onLogin = async () => {
@@ -44,7 +44,7 @@ const useLogin = () => {
       if (res.status === 200) {
         cookie.setCookie(ACCESS_TOKEN_KEY, res.data.accessToken);
         cookie.setCookie(REFRESH_TOKEN_KEY, res.data.refreshToken);
-        navigate("/main");
+        navigate("/posts");
       } else {
         luisToast.errorToast("로그인 실패. 다시 시도해주세요.");
       }
