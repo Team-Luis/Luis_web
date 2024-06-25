@@ -11,38 +11,32 @@ import axios from "axios";
 import token from "../../../libs/token/token";
 import { ACCESS_TOKEN_KEY, REQUEST_TOKEN_KEY } from "../../../constants/token.constant";
 import { luisAxios } from "../../../libs/axios/customAxios";
+import useWrite from "../../../hooks/write/useWrite";
+import useHeader from "../../../hooks/common/header/useHeader";
 
 const Header = () => {
   const navigate = useNavigate();
   const { pathname } = useLocation();
-  const { title, content } = useRecoilValue(WriteDataAtom);
-  const category = useRecoilValue(CategoryData);
-  const onWrite = async () => {
-    await luisAxios
-      .post(`/post`, {
-        title: title,
-        content: content,
-        category: category,
-      })
-      .then(() => luisToast.successToast("글 등록 성공"));
-  };
+  const { ...header } = useHeader();
 
   return (
     <S.HeaderWrap>
-      <S.LogoWrap onClick={() => navigate("/")}>
+      <S.LogoWrap onClick={() => navigate("/posts")}>
         <img src={Logo} />
         <h1>luissasa</h1>
       </S.LogoWrap>
       <S.ButtonWrap>
         <Button
-          text={pathname === "/write" ? "임시저장" : "로그인"}
+          text={
+            pathname === "/write" ? "임시저장" : pathname !== "/login" ? header.profile?.userId.toString()!! : "로그인"
+          }
           style={{ color: "#FF7E73", background: "#fff", border: "1px solid #FF7E73" }}
           functions={pathname === "/write" ? () => false : () => navigate("/login")}
         />
         <Button
-          text={pathname === "/write" ? "글쓰기" : "회원가입"}
+          text={pathname === "/write" ? "글쓰기" : pathname !== "/login" ? "로그아웃" : "회원가입"}
           style={{ color: "#fff", background: "#ef7e73" }}
-          functions={pathname === "/write" ? onWrite : () => navigate("/signup")}
+          functions={pathname !== "/start" ? header.logout : () => navigate("/signup")}
         />
       </S.ButtonWrap>
     </S.HeaderWrap>
